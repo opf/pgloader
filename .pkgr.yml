@@ -8,3 +8,12 @@ targets:
       - gawk
       - freetds-dev
       - libzip-dev
+  ubuntu-16.04:
+    build_dependencies:
+      <<: *debian_build_deps
+  debian-9:
+    build_dependencies:
+      <<: *debian_build_deps
+  debian-8:
+    build_dependencies:
+      <<: *debian_build_deps
