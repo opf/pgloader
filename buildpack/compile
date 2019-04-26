@@ -1,0 +1,28 @@
+#!/bin/bash
+set -ex
+set -o pipefail
+
+BUILD_DIR="$1"
+CACHE_DIR="$2"
+ENV_DIR="$3"
+
+destination=/opt/pgloader
+mkdir -p "$destination/bin"
+
+curl -sL https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz -o - | tar xzf - -C $destination/
+ln -s $destination/ccl/scripts/ccl64 $destination/bin/ccl
+
+tmpdir=$(mktemp -d)
+curl -SL https://github.com/dimitri/pgloader/archive/v3.6.1.tar.gz -o - | tar xzf - --strip=1 -C $tmpdir
+cd $tmpdir
+make CCL_DEFAULT_DIRECTORY=$destination/ccl CL=ccl pgloader
+mv build/bin/pgloader $destination/bin/
+rm -rf $tmpdir
+
+mkdir -p $BUILD_DIR/.profile.d
+cat > $BUILD_DIR/.profile.d/compile-defaults.sh <<CONF
+CCL_DEFAULT_DIRECTORY=/opt/pgloader/ccl
+PATH="$PATH:/opt/pgloader/bin"
+CONF
+
+echo "DONE"

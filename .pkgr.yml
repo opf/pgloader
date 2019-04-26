@@ -1,0 +1,12 @@
+buildpacks:
+  - https://github.com/pkgr/pkgr-source-buildpack
+
+targets:
+  ubuntu:18.04:
+    build_dependencies:
+      - libsqlite3-dev
+      - make
+      - curl
+      - gawk
+      - freetds-dev
+      - libzip-dev
