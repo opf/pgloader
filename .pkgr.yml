@@ -1,21 +1,26 @@
+cli: bin/pgloader
 buildpack: https://github.com/pkgr/pkgr-source-buildpack
 targets:
   ubuntu-18.04: 
+    default_dependencies: false
     build_dependencies:
       - gawk
       - freetds-dev
       - libzip-dev
   ubuntu-16.04:
+    default_dependencies: false
     build_dependencies:
       - gawk
       - freetds-dev
       - libzip-dev
   debian-9:
+    default_dependencies: false
     build_dependencies:
       - gawk
       - freetds-dev
       - libzip-dev
   debian-8:
+    default_dependencies: false
     build_dependencies:
       - gawk
       - freetds-dev
