@@ -15,7 +15,7 @@ ln -s $destination/ccl/scripts/ccl64 $destination/bin/ccl
 tmpdir=$(mktemp -d)
 curl -SL https://github.com/dimitri/pgloader/archive/v3.6.1.tar.gz -o - | tar xzf - --strip=1 -C $tmpdir
 cd $tmpdir
-make CCL_DEFAULT_DIRECTORY=$destination/ccl CL=ccl pgloader
+make PATH="$PATH:/opt/pgloader/bin" CCL_DEFAULT_DIRECTORY=$destination/ccl CL=ccl pgloader
 mv build/bin/pgloader $destination/bin/
 rm -rf $tmpdir
 
