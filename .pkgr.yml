@@ -1,13 +1,10 @@
-x-debian-build-deps: &debian-build-deps
-  - libsqlite3-dev
-  - make
-  - curl
-  - gawk
-  - freetds-dev
-  - libzip-dev
-
 buildpack: https://github.com/pkgr/pkgr-source-buildpack
 targets:
-  ubuntu-18.04:
-    build_dependencies:
-      <<: *x-debian-build-deps
+  ubuntu-18.04: 
+    build_dependencies: &debian_build_deps
+      - libsqlite3-dev
+      - make
+      - curl
+      - gawk
+      - freetds-dev
+      - libzip-dev
