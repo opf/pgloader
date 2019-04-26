@@ -4,24 +4,34 @@ targets:
   ubuntu-18.04: 
     default_dependencies: false
     build_dependencies:
-      - gawk
       - freetds-dev
       - libzip-dev
+    dependencies:
+      - gawk
   ubuntu-16.04:
     default_dependencies: false
     build_dependencies:
-      - gawk
       - freetds-dev
       - libzip-dev
+    dependencies:
+      - gawk
   debian-9:
     default_dependencies: false
     build_dependencies:
-      - gawk
       - freetds-dev
       - libzip-dev
+    dependencies:
+      - gawk
   debian-8:
     default_dependencies: false
     build_dependencies:
-      - gawk
       - freetds-dev
       - libzip-dev
+    dependencies:
+      - gawk
+  centos-7:
+    default_dependencies: false
+    build_dependencies:
+      - libzip-devel
+    dependencies:
+      - gawk

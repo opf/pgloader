@@ -6,6 +6,7 @@ BUILD_DIR="$1"
 CACHE_DIR="$2"
 ENV_DIR="$3"
 
+DEBUG=${DEBUG:=/dev/null}
 destination=/opt/pgloader
 mkdir -p "$destination/bin"
 
@@ -15,7 +16,7 @@ ln -s $destination/ccl/scripts/ccl64 $destination/bin/ccl
 tmpdir=$(mktemp -d)
 curl -SL https://github.com/dimitri/pgloader/archive/v3.6.1.tar.gz -o - | tar xzf - --strip=1 -C $tmpdir
 cd $tmpdir
-if make PATH="$PATH:/opt/pgloader/bin" CCL_DEFAULT_DIRECTORY=$destination/ccl CL=ccl pgloader >& /tmp/log ; then
+if make PATH="$PATH:/opt/pgloader/bin" CCL_DEFAULT_DIRECTORY=$destination/ccl CL=ccl pgloader | tee -a $DEBUG >& /tmp/log ; then
 	echo "Compilation successful:"
 	tail /tmp/log
 else
