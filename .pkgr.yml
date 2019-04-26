@@ -33,5 +33,6 @@ targets:
     default_dependencies: false
     build_dependencies:
       - libzip-devel
+      - freetds-devel
     dependencies:
       - gawk
