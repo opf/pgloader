@@ -36,3 +36,10 @@ targets:
       - freetds-devel
     dependencies:
       - gawk
+  sles-12:
+    default_dependencies: false
+    build_dependencies:
+      - libzip-devel
+      - freetds-devel
+    dependencies:
+      - gawk
