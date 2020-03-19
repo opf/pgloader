@@ -15,6 +15,13 @@ targets:
       - libzip-dev
     dependencies:
       - gawk
+  debian-10:
+    default_dependencies: false
+    build_dependencies:
+      - freetds-dev
+      - libzip-dev
+    dependencies:
+      - gawk
   debian-9:
     default_dependencies: false
     build_dependencies:
